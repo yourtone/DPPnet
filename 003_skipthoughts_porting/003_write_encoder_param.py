@@ -18,8 +18,7 @@ print ''
 
 ## import skipthoughts path
 import sys
-skipthoughts_path = '/media/hyeonwoonoh/TeraDrive/Projects' + \
-                    '/cumulab/2015_SUMMER/002_image_qa/002_hyeonwoonoh/skip-thoughts'
+skipthoughts_path = '/home/deepnet/lyt/WordVecs/skip-thoughts'
 print 'skipthoughts_path: %s' % skipthoughts_path
 sys.path.append(skipthoughts_path)
 import skipthoughts

@@ -19,9 +19,10 @@ opt = cmd:parse(arg or {})
 
 print('load vqa data')
 -- load vqa dataset
+cache_dir = './cache'
 local vqa_data = vqa_loader.load_data(opt.vqa_data_dir, opt.vqa_task_type, opt.vqa_ans_type,
                                       opt.seq_len, opt.batch_size, true, opt.datatype, 
-                                      opt.batch_size, add_ans2vocab)
+                                      opt.batch_size, opt.add_ans2vocab, cache_dir)
 
 local vocab_dict = vqa_data.vocab_dict
 print('convert vocab_dict[1] (<empty>) to UNK')

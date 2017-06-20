@@ -1,3 +1,17 @@
+# add by Lin 2017-6-20
+
+001_porting_VQA_data/VQA
+001_porting_VQA_data/data
+001_porting_VQA_data/model
+001_porting_VQA_data/utils
+003_skipthoughts_porting/cache/
+003_skipthoughts_porting/data
+003_skipthoughts_porting/model
+003_skipthoughts_porting/skip-thoughts
+003_skipthoughts_porting/utils
+data/skipthoughts_porting/
+skip-thoughts
+.gitignore
 
 # data
 data/VQA_torch/
