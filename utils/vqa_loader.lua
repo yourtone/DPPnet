@@ -1868,7 +1868,7 @@ function vqa_loader.load_data(vqa_dir, taskType, ansType, seq_len, batch_size,
    add_ans2vocab = add_ans2vocab or false
 
    local cache_path = paths.concat(cache_dir, 
-                            string.format('vqa_data_cache_%s_%s_%d', ansType, opt_split, seq_len))
+                            string.format('v2_vqa_data_cache_%s_%s_%d', ansType, opt_split, seq_len))
    
    print(string.format('training data cache path is..: %s', cache_path))
    local is_cached = path.isfile(cache_path) 

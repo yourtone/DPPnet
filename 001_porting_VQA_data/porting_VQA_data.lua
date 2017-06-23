@@ -14,8 +14,8 @@ cmd:option('-target', 'annotation', 'target file [annotation|question]')
 opt = cmd:parse(arg or {})
 
 if opt.target == 'annotation' then
-   local ann_file_path = paths.concat(string.format('%s/Annotations',opt.vqa_dir),
-                         string.format('mscoco_%s_annotations.json',opt.dataSubType))
+   local ann_file_path = paths.concat(string.format('%s',opt.vqa_dir),
+                         string.format('v2_mscoco_%s_annotations.json',opt.dataSubType))
 
    local ann_file = io.open(ann_file_path, 'r')
    local ann_string = ann_file:read()
@@ -31,7 +31,9 @@ if opt.target == 'annotation' then
    local num_ann = #ann_json.annotations 
    local i = 1
    for k, v in pairs(ann_json.annotations) do
-      print(string.format('[Annotation|%s]%d/%d',opt.dataSubType, k, num_ann))
+      if i % 1000 == 0 then
+         print(string.format('[Annotation|%s]%d/%d',opt.dataSubType, k, num_ann))
+      end
       local answer_file_path = string.format('%s/%s_%d.t7', save_answer_dir,opt.dataSubType, k)
       torch.save(answer_file_path, v.answers)
 
@@ -51,8 +53,8 @@ if opt.target == 'annotation' then
    local save_ann_path = string.format('%s/annotations.t7', save_ann_dir)
    torch.save(save_ann_path, annotations)
 elseif opt.target == 'question' then
-   local question_file_path = paths.concat(string.format('%s/Questions',opt.vqa_dir), 
-                      string.format('%s_mscoco_%s_questions.json',opt.taskType,opt.dataSubType))
+   local question_file_path = paths.concat(string.format('%s',opt.vqa_dir), 
+                      string.format('v2_%s_mscoco_%s_questions.json',opt.taskType,opt.dataSubType))
 
    local question_file = io.open(question_file_path, 'r')
    local question_string = question_file:read()
@@ -70,7 +72,9 @@ elseif opt.target == 'question' then
       if opt.dataSubType == 'test2015' or opt.dataSubType == 'test-dev2015' then
          coco_subtype = 'test2015'
       end
-      print(string.format('[Question|%s|%s|%s]%d', opt.dataSubType,coco_subtype,opt.taskType,i))
+      if i % 1000 == 0 then
+         print(string.format('[Question|%s|%s|%s]%d', opt.dataSubType,coco_subtype,opt.taskType,i))
+      end
       local question_file_path = string.format('%s/%s_%d.t7', 
                                  save_question_dir,coco_subtype,v.question_id)
       local question = {}

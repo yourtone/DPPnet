@@ -10,8 +10,12 @@
 003_skipthoughts_porting/skip-thoughts
 003_skipthoughts_porting/utils
 data/skipthoughts_porting/
+data/v2_VQA_torch/
 skip-thoughts
 .gitignore
+cache/v2_vqa_data_cache_major_test-dev2015_26
+cache/v2_vqa_data_cache_major_test2015_26
+cache/v2_vqa_data_cache_major_trainval_26
 
 # data
 data/VQA_torch/
